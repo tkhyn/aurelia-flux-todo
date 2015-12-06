@@ -7,13 +7,15 @@ export class List {
 		this.dispatcher = dispatcher;
 	}
 
-	addItem(text:string) {
-		let newItemText = (text || '').trim();
+	addItem(text:Object) {
+		let newItemText = (text.value || '').trim();
 
 		if(newItemText === '') {
 			return;
 		}
 
 		this.dispatcher.dispatch('list.addItem', newItemText);
+        
+        text.value = '';
 	}	
 }
